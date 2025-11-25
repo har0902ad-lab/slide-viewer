@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>PDFスライドビュー</title>
+<style>
+  body { display:flex; flex-direction:column; align-items:center; font-family:sans-serif; }
+  #viewer { width: 80%; max-width: 800px; height: auto; margin: 20px 0; }
+  img { width: 100%; height: auto; border: 1px solid #ccc; }
+  button { margin: 5px; padding: 10px 20px; font-size: 16px; }
+</style>
+</head>
+<body>
+
+<div id="viewer">
+  <img id="page" src="page1.png" alt="Page 1">
+</div>
+
+<div>
+  <button onclick="prev()">← 前のページ</button>
+  <button onclick="next()">次のページ →</button>
+</div>
+
+<script>
+let current = 1;
+const total = 7; // ページ数を設定
+function showPage(n){
+  document.getElementById('page').src = 'page' + n + '.png';
+}
+function next(){
+  if(current < total){ current++; showPage(current); }
+}
+function prev(){
+  if(current > 1){ current--; showPage(current); }
+}
+</script>
+
+</body>
+</html>
